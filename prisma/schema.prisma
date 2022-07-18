@@ -6,9 +6,9 @@ generator client {
 }
 
 datasource db {
-    provider = "sqlite"
-    url      = "file:./db.sqlite"
-    // url      = env("DATABASE_URL")
+    provider = "postgres"
+    // url      = "file:./db.sqlite"
+    url      = env("DATABASE_URL")
 }
 
 model Example {
@@ -64,7 +64,7 @@ model Entree {
     id          String       @id @default(cuid())
     name        String
     description String
-    Rating      Int
+    rating      Int
     image       String
     category    String
     recipe      String
@@ -75,7 +75,7 @@ model Entree {
 
 model Ingredient {
     id         String   @id
-    Name       String   @unique
+    name       String   @unique
     image      String
     includedin Entree[]
 }
